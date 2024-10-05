@@ -51,3 +51,15 @@ Most likely you are getting a message
 > husky - commit-msg script failed (code 1)
 
 To fix it you either need to follow conventional commit messages rules, or remove `.husky/pre-commit` file which enables the aforementioned rule.
+
+## Links
+
+### Manual Deployment
+
+- [S3](https://aws-practice-as-bucket-1.s3.amazonaws.com/)
+- [CloudFront](https://d1zzc7ur756wdj.cloudfront.net/)
+
+### Automated Deployment
+
+- [S3](https://deploywebappstack-deploymentfrontendbucket67ceb713-i0qbmigjwr3y.s3.amazonaws.com/)
+- [CloudFront](https://d36wgq2gjat4j8.cloudfront.net/)
