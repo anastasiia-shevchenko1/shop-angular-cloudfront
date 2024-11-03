@@ -2,6 +2,6 @@
 
 <main class="container">
   @for (product of products(); track $index) {
-    <app-product-item [product]="product" [index]="$index"> </app-product-item>
+    <app-product-item [product]="product" [index]="($index+1)"> </app-product-item>
   }
 </main>
