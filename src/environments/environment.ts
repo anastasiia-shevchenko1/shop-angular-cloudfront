@@ -20,6 +20,10 @@ export const environment: Config = {
     bff: true,
     cart: false,
   },
+  user: {
+    username: 'ANASTASIIASHEVCHENKO1',
+    password: 'TEST_PASSWORD',
+  }
 };
 
 /*

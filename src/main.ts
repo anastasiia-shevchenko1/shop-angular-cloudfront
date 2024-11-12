@@ -13,6 +13,7 @@ import {
 } from '@angular/common/http';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { appRoutes } from './app/app-routes';
+import { AuthInterceptorService } from "./app/core/interceptors/auth-interceptor.service";
 
 const interceptors: Provider[] = [
   {
@@ -20,6 +21,11 @@ const interceptors: Provider[] = [
     useClass: ErrorPrintInterceptor,
     multi: true,
   },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptorService,
+    multi: true,
+  }
 ];
 
 bootstrapApplication(AppComponent, {
