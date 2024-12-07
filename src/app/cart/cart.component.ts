@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
   computed,
   inject,
@@ -54,6 +54,8 @@ export class CartComponent {
   private readonly checkoutService = inject(CheckoutService);
   private readonly cartService = inject(CartService);
 
+  #cdr = inject(ChangeDetectorRef);
+
   products = toSignal(this.checkoutService.getProductsForCheckout(), {
     initialValue: [],
   });
@@ -89,10 +91,10 @@ export class CartComponent {
   }
 
   add(id: string): void {
-    this.cartService.addItem(id);
+    this.cartService.addItem(id).subscribe(() => this.#cdr.markForCheck());
   }
 
   remove(id: string): void {
-    this.cartService.removeItem(id);
+    this.cartService.removeItem(id).subscribe(() => this.#cdr.markForCheck());
   }
 }

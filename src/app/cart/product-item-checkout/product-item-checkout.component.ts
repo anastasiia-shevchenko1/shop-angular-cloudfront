@@ -1,6 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
+  inject,
   input,
   output,
 } from '@angular/core';
@@ -8,6 +10,7 @@ import { ProductCheckout } from '../../products/product.interface';
 import { CartCountControlsComponent } from '../../core/cart-count-controls/cart-count-controls.component';
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { MatCard } from '@angular/material/card';
+import { CartService } from "../cart.service";
 
 @Component({
   selector: 'app-product-item-checkout',
@@ -23,4 +26,16 @@ export class ProductItemCheckoutComponent {
 
   add = output();
   remove = output();
+
+  #cartService = inject(CartService);
+
+  countInCart = computed(() => {
+    const cart = this.#cartService.cart();
+
+    if (!(this.product().id in cart)) {
+      return 0;
+    }
+
+    return cart[this.product().id];
+  });
 }
